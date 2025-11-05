@@ -1,56 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Scavenger Hunt – Complete</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scavenger Hunt Complete</title>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
-<body onload="verifyCompletion()">
-  <div id="main">
-    <h1>🎉 You found all 5 spots!</h1>
-    <p>Enter your email to claim your reward:</p>
+<body id="complete">
+  <div class="container">
+    <h1>🎉 Congratulations!</h1>
+    <p>You found all 5 spots! Enter your email to claim your reward:</p>
 
     <form id="emailForm">
-      <input type="email" id="email" required placeholder="you@example.com" />
+      <input type="email" id="email" placeholder="you@example.com" required>
       <button type="submit">Submit</button>
     </form>
 
     <p id="message"></p>
   </div>
 
-  <div id="notComplete" style="display:none;">
-    <h1>⛔ Not complete yet!</h1>
-    <p>You haven’t found all 5 spots. Keep scanning the QR codes!</p>
-    <a href="index.html">Back to start</a>
-  </div>
-
   <script>
-    function verifyCompletion() {
+    // Redirect if user hasn't found all spots
+    window.addEventListener("load", () => {
       if (!allSpotsVisited()) {
-        document.getElementById("main").style.display = "none";
-        document.getElementById("notComplete").style.display = "block";
+        alert("You have not found all spots yet!");
+        window.location.href = "index.html";
       }
-    }
+    });
 
+    // Handle form submission
     document.getElementById("emailForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      if (!allSpotsVisited()) return;
+      e.preventDefault(); // prevent default form submission
+
+      if (!allSpotsVisited()) return; // double-check
 
       const email = document.getElementById("email").value;
+      const messageEl = document.getElementById("message");
 
-      const res = await fetch(
-        "https://script.google.com/macros/u/1/s/AKfycbyDucFaEAxK-h0YnKzadmG67U96kc3frASGRBG1LmLEUMoAaaPJfhaZMsAy4PHDDhUb/exec", 
-        {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+      try {
+        const res = await fetch(API_CALL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        if (res.ok) {
+          messageEl.textContent = "✅ Email submitted! Check your inbox.";
+          messageEl.style.color = "lightgreen";
+          localStorage.clear(); // reset scavenger hunt progress
+          // Optional: disable form after success
+          document.getElementById("emailForm").querySelector("button").disabled = true;
+        } else {
+          messageEl.textContent = "❌ Something went wrong. Try again.";
+          messageEl.style.color = "red";
         }
-    );
-
-      if (res.ok) {
-        document.getElementById("message").textContent = "✅ Email submitted! Check your inbox.";
-        localStorage.clear();
-      } else {
-        document.getElementById("message").textContent = "❌ Something went wrong. Try again.";
+      } catch (err) {
+        console.error(err);
+        messageEl.textContent = "❌ Network error. Try again.";
+        messageEl.style.color = "red";
       }
     });
   </script>
