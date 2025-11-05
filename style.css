@@ -77,12 +77,34 @@ body#spot2 { background-image: url('images/green_2.png'); }
 body#spot3 { background-image: url('images/forest_3.png'); }
 body#spot4 { background-image: url('images/red_4.png'); }
 body#spot5 { background-image: url('images/yellow_5.png'); }
-body#complete { background-image: url('images/complete-bg.jpg'); }
+body#complete { background-image: url('images/complete.png'); }
+
+/* Logo styling */
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: auto;
+  z-index: 10;
+}
+
+/* Shrink logo on smaller screens */
+@media (max-width: 1024px) {
+  .logo {
+    width: 150px;
+  }
+}
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
   button, input[type="email"] {
     width: 80%;
     font-size: 1.1rem;
+  }
+
+  .logo {
+    width: 100px;
   }
 }
