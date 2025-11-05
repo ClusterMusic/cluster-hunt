@@ -12,9 +12,8 @@
     <h1>🎉 Congratulations!</h1>
     <p>You found all 5 spots! Enter your email to claim your reward:</p>
 
-    <!-- Form POST to Google Apps Script -->
     <form id="emailForm" 
-          action="https://script.google.com/macros/s/AKfycbxb7xX--eeKOrrfrDrBXlIezMlTZGEQiHQWaYEePlIPLkMFajWnyQZ3jXFXcRPlKYc/exec" 
+          action="https://script.google.com/macros/s/AKfycbySherOi57uyXCH-8ZuTxBz38IAJIzVrVFxfLeaenzT8CXrxzqE9GwIUSG82K1cJyhD/exec" 
           method="POST" 
           target="_blank">
       <input type="email" name="email" placeholder="you@example.com" required>
@@ -25,15 +24,12 @@
   </div>
 
   <script>
-    // Redirect if user hasn't found all spots
     window.addEventListener("load", () => {
       if (!allSpotsVisited()) {
         alert("You have not found all spots yet!");
         window.location.href = "index.html";
       }
     });
-
-    // Optional: reset localStorage after form submission
     const form = document.getElementById("emailForm");
     form.addEventListener("submit", () => {
       localStorage.clear();
