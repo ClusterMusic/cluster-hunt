@@ -70,12 +70,11 @@ input[type="email"]:focus {
 }
 
 /* Spot-specific backgrounds using body ID */
-body#index { background-image: url('images/index-bg.jpg'); }
-body#spot1 { background-image: url('images/spot1-bg.jpg'); }
-body#spot2 { background-image: url('images/spot2-bg.jpg'); }
-body#spot3 { background-image: url('images/spot3-bg.jpg'); }
-body#spot4 { background-image: url('images/spot4-bg.jpg'); }
-body#spot5 { background-image: url('images/spot5-bg.jpg'); }
+body#spot1 { background-image: url('images/1.png'); }
+body#spot2 { background-image: url('images/2.png'); }
+body#spot3 { background-image: url('images/3.png'); }
+body#spot4 { background-image: url('images/4.png'); }
+body#spot5 { background-image: url('images/5.png'); }
 body#complete { background-image: url('images/complete-bg.jpg'); }
 
 /* Responsive adjustments */
