@@ -1,5 +1,5 @@
 const TOTAL_SPOTS = 5;
-const API_CALL = "https://script.google.com/macros/u/1/s/AKfycbyDucFaEAxK-h0YnKzadmG67U96kc3frASGRBG1LmLEUMoAaaPJfhaZMsAy4PHDDhUb/exec";
+const API_CALL = "https://script.google.com/macros/s/AKfycbyDucFaEAxK-h0YnKzadmG67U96kc3frASGRBG1LmLEUMoAaaPJfhaZMsAy4PHDDhUb/exec";
 
 function markVisited(spotId) {
   let progress = JSON.parse(localStorage.getItem("visitedSpots") || "{}");
