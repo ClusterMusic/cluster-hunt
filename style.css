@@ -72,11 +72,11 @@ input[type="email"]:focus {
 }
 
 /* Spot-specific backgrounds using body ID */
-body#spot1 { background-image: url('images/1.png'); }
-body#spot2 { background-image: url('images/2.png'); }
-body#spot3 { background-image: url('images/3.png'); }
-body#spot4 { background-image: url('images/4.png'); }
-body#spot5 { background-image: url('images/5.png'); }
+body#spot1 { background-image: url('images/purple_1.png'); }
+body#spot2 { background-image: url('images/green_2.png'); }
+body#spot3 { background-image: url('images/forest_3.png'); }
+body#spot4 { background-image: url('images/red_4.png'); }
+body#spot5 { background-image: url('images/yellow_5.png'); }
 body#complete { background-image: url('images/complete-bg.jpg'); }
 
 /* Responsive adjustments */
