@@ -12,8 +12,12 @@
     <h1>🎉 Congratulations!</h1>
     <p>You found all 5 spots! Enter your email to claim your reward:</p>
 
-    <form id="emailForm">
-      <input type="email" id="email" placeholder="you@example.com" required>
+    <!-- Form POST to Google Apps Script -->
+    <form id="emailForm" 
+          action="https://script.google.com/macros/s/AKfycbyiDmc7XBl8cS4B6t0SqL-w2FqaUoci6VAdWaxmJxAGlCQ-X3v5i1fESpWVapcsyQYz/exec" 
+          method="POST" 
+          target="_blank">
+      <input type="email" name="email" placeholder="you@example.com" required>
       <button type="submit">Submit</button>
     </form>
 
@@ -29,37 +33,11 @@
       }
     });
 
-    // Handle form submission
-    document.getElementById("emailForm").addEventListener("submit", async (e) => {
-      e.preventDefault(); // prevent default form submission
-
-      if (!allSpotsVisited()) return; // double-check
-
-      const email = document.getElementById("email").value;
-      const messageEl = document.getElementById("message");
-
-      try {
-        const res = await fetch(API_CALL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email })
-        });
-
-        if (res.ok) {
-          messageEl.textContent = "✅ Email submitted! Check your inbox.";
-          messageEl.style.color = "lightgreen";
-          localStorage.clear(); // reset scavenger hunt progress
-          // Optional: disable form after success
-          document.getElementById("emailForm").querySelector("button").disabled = true;
-        } else {
-          messageEl.textContent = "❌ Something went wrong. Try again.";
-          messageEl.style.color = "red";
-        }
-      } catch (err) {
-        console.error(err);
-        messageEl.textContent = "❌ Network error. Try again.";
-        messageEl.style.color = "red";
-      }
+    // Optional: reset localStorage after form submission
+    const form = document.getElementById("emailForm");
+    form.addEventListener("submit", () => {
+      localStorage.clear();
+      document.getElementById("message").textContent = "✅ Submitted! Thank you.";
     });
   </script>
 </body>
