@@ -5,11 +5,53 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
-<body id="spot5" onload="markVisited(5); setTimeout(checkCompletion, 500)">
+<body id="spot5" onload="
+markVisited(4);
+setTimeout(checkCompletion, 500);
+updateCountdown();
+setInterval(updateCountdown, 500);
+">
   <img src="images/fullivory.png" alt="fullivory Logo" class="logo">
+  <div id="vingette"></div>
+  <div id="headlines">
+    <h1 id="headline1">Discover New Music</h1>
+    <h1 id="headline2">Build A Community</h1>
+    <p>Cluster is a new way to discover and talk about music with the people around you</p>
+  </div>
   <div class="container">
-    <h1>🎯 Spot #5</h1>
-    <p>Keep scanning to find all 5 spots!</p>
+    <table id ="countdown-timer">
+      <tr id="timer">
+        <td id="days">00</td>
+        <td>:</td>
+        <td id="hours">00</td>
+        <td>:</td>
+        <td id="minutes">00</td>
+        <td>:</td>
+        <td id="seconds">00</td>
+      </tr> 
+      <tr id="timer-labels">
+        <td>Days</td>
+        <td></td>
+        <td>Hours</td>
+        <td></td>
+        <td>Minutes</td>
+        <td></td>
+        <td>Seconds</td>
+      </tr>
+    </table>
+    <div id="south">
+      <div id="southwest">
+        <a href="https://www.instagram.com/clustermusicapp/" target="_blank">
+          <img src="images/instagram.png" alt="Instagram" class="webicon">
+        </a>
+        <a href="mailto:clustermusicapp@gmail.com" target="_blank">
+          <img src="images/mail.png" alt="Email" class="webicon">
+        </a>
+      </div>
+      <div id="southeast">
+        <p>Skip the wait? Scan all five flyers 🤔</p>
+      </div>
+    </div>
   </div>
 </body>
 </html>
